@@ -10,7 +10,13 @@ All Products
     <h2 class="text-muted text-center mt-3 text-decoration-underline">
         All Products
     </h2>
-    
+    {% for msg in messages %}
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success">
+        {{msg}}
+    </div>
+    {% endif %}
+    {% endfor %}
     <table class="table table-bordered table-hover mx-2 mt-5">
         <thead>
             <tr>
@@ -35,8 +41,8 @@ All Products
                 <td>{{product.category}}</td>
                 <td>{{ product.product_description|truncatewords_html:10 }}</td>
                 <td>
-                     <!-- edit button -->
-                     <button class="btn btn-primary">
+                    <!-- edit button -->
+                    <button class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </button>
                     &nbsp;

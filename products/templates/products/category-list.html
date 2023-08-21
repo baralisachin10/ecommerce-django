@@ -11,6 +11,13 @@ All Category
     </h2>
     <div class="d-flex justify-content-center">
         <div class="col-md-6">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+            {% endfor %}
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
