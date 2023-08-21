@@ -6,37 +6,38 @@ All Products
 {% endblock %}
 
 {% block main_content %}
-
-<h2 class="text-muted text-center mt-3 text-decoration-underline">
-    All Products
-</h2>
-
-<table class="table table-bordered mx-2 mt-5">
-    <thead>
-        <tr>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Product Price</th>
-            <th>Product Quantity</th>
-            <th>Category</th>
-            <th>Product Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td>
-                <img src="{{product.product_image}}" alt="{{product.product_name}}" width="100px">
-            </td>
-            <td>{{product.product_name}}</td>
-            <td>Rs.&nbsp;{{product.product_price}}</td>
-            <td>{{product.product_quantity}}</td>
-            <td>{{product.category}}</td>
-            <td>{{ product.product_description|truncatewords_html:10 }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container-fluid">
+    <h2 class="text-muted text-center mt-3 text-decoration-underline">
+        All Products
+    </h2>
+    
+    <table class="table table-bordered mx-2 mt-5">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Category</th>
+                <th>Product Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>
+                    <img src="{{product.product_image}}" alt="{{product.product_name}}" width="100px">
+                </td>
+                <td>{{product.product_name}}</td>
+                <td>Rs.&nbsp;{{product.product_price}}</td>
+                <td>{{product.product_quantity}}</td>
+                <td>{{product.category}}</td>
+                <td>{{ product.product_description|truncatewords_html:10 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
