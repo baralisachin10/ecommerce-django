@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block page_title %}
+All Category
+{% endblock %}
+
+{% block main_content %}
+<div class="container">
+    <h2 class="text-muted text-center my-4">
+        Category List
+    </h2>
+    <div class="d-flex justify-content-center">
+        <div class="col-md-6">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{category.category_name}}</td>
+                        <td class="d-flex justify-content-start">
+                            <!-- edit button -->
+                            <button class="btn btn-primary">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            &nbsp; &nbsp;
+                            <!-- delete button -->
+                            <button class="btn btn-danger">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

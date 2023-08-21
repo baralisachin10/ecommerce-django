@@ -11,7 +11,7 @@ All Products
         All Products
     </h2>
     
-    <table class="table table-bordered mx-2 mt-5">
+    <table class="table table-bordered table-hover mx-2 mt-5">
         <thead>
             <tr>
                 <th>Product Image</th>
@@ -34,6 +34,17 @@ All Products
                 <td>{{product.product_quantity}}</td>
                 <td>{{product.category}}</td>
                 <td>{{ product.product_description|truncatewords_html:10 }}</td>
+                <td>
+                     <!-- edit button -->
+                     <button class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    &nbsp;
+                    <!-- delete button -->
+                    <button class="btn btn-danger">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
