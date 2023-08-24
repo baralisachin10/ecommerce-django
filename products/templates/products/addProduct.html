@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block page_title %}
-All products
+Add-Products
 {% endblock %}
 
 {% block main_content %}
@@ -20,7 +20,7 @@ All products
             </div>
             {% endif %}
             {% endfor %}
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="mt-3">

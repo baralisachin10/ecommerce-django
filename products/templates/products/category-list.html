@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block page_title %}
-All Category
+All-Category
 {% endblock %}
 
 {% block main_content %}
@@ -31,14 +31,14 @@ All Category
                         <td>{{category.category_name}}</td>
                         <td class="d-flex justify-content-start">
                             <!-- edit button -->
-                            <button class="btn btn-primary">
+                            <a href="{% url 'update_category' category.id %}" class="btn btn-primary">
                                 <i class="bi bi-pencil-square"></i>
-                            </button>
+                            </a>
                             &nbsp; &nbsp;
                             <!-- delete button -->
-                            <button class="btn btn-danger">
+                            <a href="{% url 'delete_category' category.id %}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this Category?')">
                                 <i class="bi bi-trash-fill"></i>
-                            </button>
+                        </a>
                         </td>
                     </tr>
                     {% endfor %}
