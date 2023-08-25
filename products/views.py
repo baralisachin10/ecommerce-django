@@ -82,9 +82,9 @@ def update_category(request, category_id):
             return redirect("/products/category")
         else:
             messages.add_message(request, messages.ERROR, "Failed to update category!")
-            return render(request, "products/addCategory.html", {"form": form})
+            return render(request, "products/updateCategory.html", {"form": form})
     context = {"form": CategoryForm(instance=category)}
-    return render(request, "products/addCategory.html", context)
+    return render(request, "products/updateCategory.html", context)
 
 
 # to delete the product
@@ -112,6 +112,6 @@ def update_product(request, product_id):
             return redirect("/products/")
         else:
             messages.add_message(request, messages.ERROR, "Failed to update products")
-            return render(request, "products/addProduct.html", {"form": form})
+            return render(request, "products/updateProduct.html", {"form": form})
     context = {"form": ProductForm(instance=product)}
-    return render(request, "products/addProduct.html", context)
+    return render(request, "products/updateProduct.html", context)
