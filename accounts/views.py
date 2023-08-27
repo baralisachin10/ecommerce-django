@@ -30,7 +30,7 @@ def user_login(request):
             user = authenticate(request, username = form.cleaned_data['username'], password = form.cleaned_data['password'])
             if user is not None:
                 login(request,user)
-                return redirect("/products/")
+                return redirect("/account/dashboard")
             else:
                 messages.add_message(request, messages.ERROR, "Please provide the correct credentials!")
                 return render(request,"accounts/login.html",{'form':form})
@@ -39,3 +39,6 @@ def user_login(request):
     }
     return render(request,'accounts/login.html',context)
 
+
+def dashboard(request):
+    return render(request, "accounts/dashboard.html")
