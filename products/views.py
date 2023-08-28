@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect
 from .models import Products, Category
 from .forms import CategoryForm, ProductForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from accounts.auth import admin_only
 
 # Create your views here.
 
 
 # function to show products
+@login_required
+@admin_only
 def show_products(request):
     products = Products.objects.all()
     context = {"products": products}
@@ -14,6 +18,8 @@ def show_products(request):
 
 
 # function to show category
+@login_required
+@admin_only
 def show_category(request):
     categories = Category.objects.all()
     context = {"categories": categories}
@@ -21,6 +27,8 @@ def show_category(request):
 
 
 # function to add category using form
+@login_required
+@admin_only
 def post_category(request):
     if request.method == "POST":
         form = CategoryForm(request.POST)
@@ -29,7 +37,7 @@ def post_category(request):
             messages.add_message(
                 request, messages.SUCCESS, "Category added successfully!"
             )
-            return redirect("/products/category")
+            return redirect("/admin/category")
         else:
             messages.add_message(request, messages.ERROR, "Failed to add Category!")
             return render(request, "products/addCategory.html", {"form": CategoryForm})
@@ -39,6 +47,8 @@ def post_category(request):
 
 
 # function to add product using form
+@login_required
+@admin_only
 def post_product(request):
     if request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
@@ -47,7 +57,7 @@ def post_product(request):
             messages.add_message(
                 request, messages.SUCCESS, "Product added successfully!"
             )
-            return redirect("/products/")
+            return redirect("/admin/product/")
         else:
             messages.add_message(
                 request,
@@ -60,7 +70,8 @@ def post_product(request):
 
 
 # to delete the category
-
+@login_required
+@admin_only
 
 def delete_category(request, category_id):
     category = Category.objects.get(id=category_id)
@@ -70,6 +81,8 @@ def delete_category(request, category_id):
 
 
 # to update the category using category form
+@login_required
+@admin_only
 def update_category(request, category_id):
     category = Category.objects.get(id=category_id)
     if request.method == "POST":
@@ -79,7 +92,7 @@ def update_category(request, category_id):
             messages.add_message(
                 request, messages.SUCCESS, "Category updated successfully!"
             )
-            return redirect("/products/category")
+            return redirect("/admin/category")
         else:
             messages.add_message(request, messages.ERROR, "Failed to update category!")
             return render(request, "products/updateCategory.html", {"form": form})
@@ -88,17 +101,19 @@ def update_category(request, category_id):
 
 
 # to delete the product
-
+@login_required
+@admin_only
 
 def delete_product(request, product_id):
     products = Products.objects.get(id=product_id)
     products.delete()
     messages.add_message(request, messages.SUCCESS, "Product deleted successfully")
-    return redirect("/products/")
+    return redirect("/admin/product/")
 
 
 # to update product using productForm
-
+@login_required
+@admin_only
 
 def update_product(request, product_id):
     product = Products.objects.get(id=product_id)
@@ -109,7 +124,7 @@ def update_product(request, product_id):
             messages.add_message(
                 request, messages.SUCCESS, "Product updated successfully"
             )
-            return redirect("/products/")
+            return redirect("/admin/product/")
         else:
             messages.add_message(request, messages.ERROR, "Failed to update products")
             return render(request, "products/updateProduct.html", {"form": form})

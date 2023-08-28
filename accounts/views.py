@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from . forms import LoginForm
+from django.contrib.auth.decorators import login_required
+from .auth import admin_only
 
 # to register the user
 def user_register(request):
@@ -27,7 +29,7 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user = authenticate(request, username = form.cleaned_data['username'], password = form.cleaned_data['password'])
+            user = authenticate(request, username = data['username'], password = data['password'])
             if user is not None:
                 login(request,user)
                 return redirect("/account/dashboard")
@@ -39,6 +41,11 @@ def user_login(request):
     }
     return render(request,'accounts/login.html',context)
 
+def user_logout(request):
+    logout(request)
+    return redirect('/account/login')
 
+@login_required
+@admin_only
 def dashboard(request):
     return render(request, "accounts/dashboard.html")
