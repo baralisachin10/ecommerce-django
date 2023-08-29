@@ -33,10 +33,39 @@
                 </form>
             </div>
             <div class="col-lg-3">
-                icon content here
+                <div class="d-flex align-item-center justify-content-end">
+                    <div class="col-md-4">
+                        <a href="{% url 'user_login' %}" class="text-decoration-none">
+                            <button class="btn btn-danger d-flex gap-2 align-items-center">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                Sign in
+                            </button>
+
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'user_register' %}" class="text-decoration-none">
+                            <button class="btn btn-danger d-flex gap-2 align-items-center">
+                                <i class="fa-solid fa-user-plus"></i>
+                                Sign Up
+                            </button>
+
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="text-decoration-none">
+                            <button class="btn btn-warning d-flex gap-2 align-items-center">
+                                <i class="fa-solid fa-cart-shopping fs-5"></i>
+                                Cart
+                            </button>
+
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -47,10 +76,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Products</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -66,13 +95,11 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <!-- navbar content end -->
     <div class="main">
         {% block main_content %}
