@@ -7,21 +7,78 @@
     <title>{% block page_title%} {% endblock %}</title>
 
     <!-- bootstrap css cdn link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <Link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 
     <!-- bootstrap icon cdn link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <Link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <!-- fontawesome cdn link -->
     <script src="https://kit.fontawesome.com/a0e7035190.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-
-    {% block main_content %}
-    <!-- your main content here  -->
-    {% endblock %}
+    <!-- navbar content start -->
+    <div class="container-fluid text-bg-dark">
+        <div class="d-flex justify-content-evenly align-items-center py-3">
+            <div class="col-lg-2">
+                <a class="navbar-brand badge text-bg-danger fs-5" href="{% url 'homepage' %}">Online-Store</a>
+            </div>
+            <div class="col-lg-6">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-warning d-flex align-items-center gap-2" type="submit">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                        search
+                    </button>
+                </form>
+            </div>
+            <div class="col-lg-3">
+                icon content here
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar content end -->
+    <div class="main">
+        {% block main_content %}
+        <!-- your main content here  -->
+        {% endblock %}
+    </div>
 
     <!-- bootstrap js cdn link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>

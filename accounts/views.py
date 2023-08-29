@@ -43,7 +43,7 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return redirect('/account/login')
+    return redirect('/')
 
 @login_required
 @admin_only
