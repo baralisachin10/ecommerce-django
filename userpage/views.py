@@ -15,3 +15,10 @@ def product_page(request):
         'products':products
     }
     return render(request,"client/productpage.html",context)
+
+def product_details_page(request,id):
+    single_product = Products.objects.get(id=id)
+    context={
+        'single_product': single_product
+    }
+    return render(request,"client/product_details.html",context)
