@@ -1,0 +1,40 @@
+{% extends 'client/layouts.html' %}
+
+{% block page_title %}
+Online-shop || Products
+
+{% endblock %}
+
+{% block main_content%}
+
+<div class="container-fluid">
+    <!-- product-header-start -->
+    <h2 class="text-muted text-center mt-3">
+        All Products
+    </h2>
+    <!-- product-header-end -->
+
+    <!-- product content start -->
+    <div class="row row-cols-1 row-cols-md-4 g-4 px-3 mt-4">
+        {% for product in products%}
+        <div class="col">
+          <div class="card">
+            <img src="/{{product.product_image}}" class="card-img-top" alt="..." height="350px">
+            <div class="card-body">
+              <h4 class="card-title">{{product.product_name}}</h4>
+              <h5 class="cart-text text-warning">Rs&nbsp;{{product.product_price}}</h5>
+              <p class="card-text">{{product.product_description|truncatewords_html:10 }}</p>
+              <div class="d-grid">
+                <button class="btn btn-success">
+                    View details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    <!-- product content end -->
+
+</div>
+{% endblock %}

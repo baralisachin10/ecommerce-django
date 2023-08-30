@@ -8,3 +8,10 @@ def home_page(request):
         'products': products
     }
     return render(request,"client/homepage.html",context)
+
+def product_page(request):
+    products = Products.objects.all()
+    context = {
+        'products':products
+    }
+    return render(request,"client/productpage.html",context)
