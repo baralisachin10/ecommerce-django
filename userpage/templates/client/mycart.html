@@ -40,7 +40,7 @@ Online-store || MyCart
                                 <i class="fa-solid fa-trash"></i>&nbsp;
                                 Delete
                             </a>&nbsp;
-                            <a href="#" class="btn btn-success">
+                            <a href="{% url 'order' item.product.id item.id %}" class="btn btn-success">
                                 Order Now
                             </a>
                         </td>

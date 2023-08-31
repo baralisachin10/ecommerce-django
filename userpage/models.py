@@ -17,10 +17,12 @@ class Order(models.Model):
     products = models.ForeignKey(Products,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    status = models.CharField(max_length=200,default="Pending...")
+    total_price = models.IntegerField(null = True)
+    status = models.CharField(max_length=200,default="Pending...",null=True)
     payment_method = models.CharField(max_length=200,choices=PAYMENT)
+    payment_status = models.BooleanField(default=False)
     contact_no = models.CharField(max_length=15)
     address = models.CharField(max_length=50)
     order_date = models.DateTimeField(auto_now_add=True)
-    
+
 

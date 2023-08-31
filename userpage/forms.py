@@ -4,4 +4,4 @@ from . models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        exclude = ('products','user','status')
+        fields = ["quantity","contact_no","address","payment_method",]
