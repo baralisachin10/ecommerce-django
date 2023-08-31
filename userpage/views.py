@@ -61,3 +61,13 @@ def show_cart_items(request):
     }
     return render(request,"client/mycart.html",context)
 
+@login_required
+@user_only
+def delete_cart_items(request,id):
+    user = request.user
+    items = Cart.objects.filter(user=user,id=id)
+    items.delete()
+    messages.add_message(request,messages.SUCCESS,"Item removed for cart successfully")
+    return redirect('/mycart')
+
+
