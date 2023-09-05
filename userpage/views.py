@@ -124,3 +124,12 @@ def order_form(request,product_id,cart_id):
     }
     return render(request,"client/order-form.html",context)
 
+@login_required
+@user_only
+def show_order_items(request):
+    user = request.user
+    items = Order.objects.filter(user=user)
+    context = {
+        'items' : items,
+    }
+    return render(request,"client/myorder.html",context)
