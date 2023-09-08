@@ -133,3 +133,34 @@ def show_order_items(request):
         'items' : items,
     }
     return render(request,"client/myorder.html",context)
+
+import requests as req
+def esewa_verify(request):
+    import xml.etree.ElementTree as ET
+    oid = request.GET.get('pid')
+    amount = request.GET.get('amt')
+    refId = request.GET.get('refId')
+    url ="https://uat.esewa.com.np/epay/main"
+    d = {
+    'amt': amount,
+    'rid': refId,
+    'pid': oid,
+    'scd':'EPAYTEST',
+    }
+    resp = req.post(url,d)
+    root = ET.fromstring(resp.content)
+    status = root[0].text.strip()
+    if status == 'Success':
+        order_id = oid.split("_")[0]
+        order = Order.objects.get(id = order_id)
+        order.payment_status = True
+        order.save()
+        cart_id = oid.split("_")[1]
+        cart = Cart.objects.get(id=cart_id)
+        cart.delete()
+        messages.add_message(request,messages.SUCCESS,"Payment successful")
+        return redirect('/myorder')
+    else:
+        messages.add_message(request,messages.ERROR,"Unable to make payment")
+        return redirect('/mycart')
+    

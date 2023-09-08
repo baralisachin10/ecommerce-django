@@ -15,7 +15,7 @@ Online-store || Esewa-payment
                 You are being redirected to Esewa, Please wait .......
             </h1>
             <div class="p-2" style="display: none;">
-                <form action="https://uat.esewa.com.np/epay/main" method="POST" id="esewa_form">
+                <form action="https://uat.esewa.com.np/epay/main" method="POST" id="esewa_form" target="_blank">
                     <input value="{{order.total_price}}" name="tAmt" type="hidden">
                     <input value="{{order.total_price}}" name="amt" type="hidden">
                     <input value="0" name="txAmt" type="hidden">
