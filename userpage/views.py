@@ -137,15 +137,15 @@ def show_order_items(request):
 import requests as req
 def esewa_verify(request):
     import xml.etree.ElementTree as ET
-    oid = request.GET.get('pid')
+    oid = request.GET.get('oid')
     amount = request.GET.get('amt')
     refId = request.GET.get('refId')
-    url ="https://uat.esewa.com.np/epay/main"
+    url = "https://uat.esewa.com.np/epay/transrec"
     d = {
     'amt': amount,
+    'scd': 'EPAYTEST',
     'rid': refId,
     'pid': oid,
-    'scd':'EPAYTEST',
     }
     resp = req.post(url,d)
     root = ET.fromstring(resp.content)

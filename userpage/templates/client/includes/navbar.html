@@ -17,6 +17,26 @@
             </div>
             <div class="col-lg-3">
                 <div class="d-flex align-item-center justify-content-end">
+                    {% if user.is_authenticated %}
+                    <div class="col-md-4">
+                        <a href="{% url 'user_logout' %}" class="text-decoration-none">
+                            <button class="btn btn-danger d-flex gap-2 align-items-center">
+                                Logout
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                            </button>
+
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'show_cart_items' %}" class="text-decoration-none">
+                            <button class="btn btn-warning d-flex gap-2 align-items-center">
+                                <i class="fa-solid fa-cart-shopping fs-5"></i>
+                                Cart
+                            </button>
+
+                        </a>
+                    </div>
+                    {% else%}
                     <div class="col-md-4">
                         <a href="{% url 'user_login' %}" class="text-decoration-none">
                             <button class="btn btn-danger d-flex gap-2 align-items-center">
@@ -35,15 +55,7 @@
 
                         </a>
                     </div>
-                    <div class="col-md-4">
-                        <a href="{% url 'show_cart_items' %}" class="text-decoration-none">
-                            <button class="btn btn-warning d-flex gap-2 align-items-center">
-                                <i class="fa-solid fa-cart-shopping fs-5"></i>
-                                Cart
-                            </button>
-
-                        </a>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
