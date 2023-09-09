@@ -7,12 +7,26 @@ Online-shop || Products
 
 {% block main_content%}
 
+<!-- product filter start -->
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-5 mt-5">
+      <form>
+        {{product_filter.form}}
+        <button class="btn btn-success" type="submit">search</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- product filter end -->
+
 <div class="container-fluid">
     <!-- product-header-start -->
     <h2 class="text-muted text-center mt-3">
         All Products
     </h2>
     <!-- product-header-end -->
+
 
     {% for msg in messages %}
     {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}

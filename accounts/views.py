@@ -14,7 +14,7 @@ def user_register(request):
         if form.is_valid():
             form.save()
             messages.add_message(request,messages.SUCCESS,'Account created successfully')
-            return redirect('/account/register/')
+            return redirect('/account/login')
         else:
             messages.add_message(request,messages.ERROR,'Please verify the form fields')
             return render(request, 'accounts/register.html',{'form':form})

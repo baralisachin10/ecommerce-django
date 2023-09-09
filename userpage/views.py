@@ -6,6 +6,7 @@ from . models import Cart
 from django.contrib import messages
 from .forms import OrderForm
 from .models import Order
+from .filters import ProductFilter
 
 # Create your views here.
 
@@ -18,8 +19,11 @@ def home_page(request):
 
 def product_page(request):
     products = Products.objects.all()
+    product_filter = ProductFilter(request.GET,queryset=products)
+    product_final = product_filter.qs
     context = {
-        'products':products
+        'products':product_final,
+        'product_filter': product_filter
     }
     return render(request,"client/productpage.html",context)
 
